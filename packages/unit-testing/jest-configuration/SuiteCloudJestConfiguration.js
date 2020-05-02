@@ -48,15 +48,14 @@ class SuiteCloudAdvancedJestConfiguration {
 			return `<rootDir>/${this.projectFolder}/FileCabinet/SuiteScripts$1`;
 		}
 		if (this.projectType === PROJECT_TYPE.SUITEAPP) {
-			let applicationId = this.projectInfoService.getApplicationId();
-			return `<rootDir>/${this.projectFolder}/FileCabinet/SuiteApps/${applicationId}$1`;
+			return `<rootDir>/${this.projectFolder}/$1`;
 		}
 		throw 'Unrecognized projectType. Please revisit your SuiteCloud Jest configuration';
 	}
 
 	_generateStubsModuleNameMapperEntries() {
 		const stubs = {};
-		const forEachFn = stub => {
+		const forEachFn = (stub) => {
 			stubs[`^${stub.module}$`] = stub.path;
 		};
 		CORE_STUBS.forEach(forEachFn);
@@ -81,7 +80,7 @@ class SuiteCloudAdvancedJestConfiguration {
 }
 
 module.exports = {
-	build: options => {
+	build: (options) => {
 		return new SuiteCloudAdvancedJestConfiguration(options).generate();
 	},
 	ProjectType: PROJECT_TYPE,
