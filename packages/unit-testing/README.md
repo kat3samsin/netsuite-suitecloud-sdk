@@ -86,7 +86,7 @@ module.exports = SuiteCloudJestConfiguration.build({
 const SuiteCloudJestConfiguration = require("@oracle/suitecloud-unit-testing/jest-configuration/SuiteCloudJestConfiguration");
 
 module.exports = SuiteCloudJestConfiguration.build({
-  projectFolder: 'src', //or your SDF project folder
+  projectFolder: 'FileCabinet/SuiteApps/com.netsuite.bundle/src', //or your SDF project folder
   projectType: SuiteCloudJestConfiguration.ProjectType.SUITEAPP,
 });
 ```
@@ -236,14 +236,20 @@ See below the content of the SuiteCloud Unit Testing files:
 const SuiteCloudJestConfiguration = require("@oracle/suitecloud-unit-testing/jest-configuration/SuiteCloudJestConfiguration");
 
 module.exports = SuiteCloudJestConfiguration.build({
-		projectFolder: 'src',
-		projectType: SuiteCloudJestConfiguration.ProjectType.ACP,
+		projectFolder: 'FileCabinet/SuiteApps/com.netsuite.bundle/src', //or your SDF project folder
+        projectType: SuiteCloudJestConfiguration.ProjectType.SUITEAPP,
 		customStubs: [
 			{
 				module: "N/http",
 				path: "<rootDir>/customStubs/http.js"
 			}
-		]
+        ],
+        customStubsByPath: [
+        {
+            name: 'N/',
+            path: '<rootDir>/FileCabinet/SuiteApps/com.netsuite.bundle/test/unit/mock/'
+        }
+    ]
 });
 ```
 - `http.js` file: This is the stub file. It partially mocks NetSuite's **N/http** module.

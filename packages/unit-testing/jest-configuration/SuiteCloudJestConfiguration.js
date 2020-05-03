@@ -2,7 +2,7 @@ const assert = require('assert');
 const TESTING_FRAMEWORK_PATH = '@oracle/suitecloud-unit-testing';
 const CORE_STUBS_PATH = `${TESTING_FRAMEWORK_PATH}/stubs`;
 const nodeModulesToTransform = [CORE_STUBS_PATH].join('|');
-const SUITESCRIPT_FOLDER_REGEX = '^SuiteScripts(.*)$';
+const SUITESCRIPT_FOLDER_REGEX = '^src(.*)$';
 const ProjectInfoService = require('../services/ProjectInfoService');
 
 const PROJECT_TYPE = {
@@ -36,8 +36,12 @@ class SuiteCloudAdvancedJestConfiguration {
 		this.projectFolder = options.projectFolder;
 		this.projectType = options.projectType;
 		this.customStubs = options.customStubs;
+		this.customStubsByPath = options.customStubsByPath;
 		if (this.customStubs == null) {
 			this.customStubs = [];
+		}
+		if (this.customStubsByPath == null) {
+			this.customStubsByPath = [];
 		}
 
 		this.projectInfoService = new ProjectInfoService(this.projectFolder);
@@ -48,6 +52,8 @@ class SuiteCloudAdvancedJestConfiguration {
 			return `<rootDir>/${this.projectFolder}/FileCabinet/SuiteScripts$1`;
 		}
 		if (this.projectType === PROJECT_TYPE.SUITEAPP) {
+			// let applicationId = this.projectInfoService.getApplicationId();
+			// return `<rootDir>/${this.projectFolder}/FileCabinet/SuiteApps/${applicationId}$1`;
 			return `<rootDir>/${this.projectFolder}/$1`;
 		}
 		throw 'Unrecognized projectType. Please revisit your SuiteCloud Jest configuration';
@@ -61,6 +67,10 @@ class SuiteCloudAdvancedJestConfiguration {
 		CORE_STUBS.forEach(forEachFn);
 		this.customStubs.forEach(forEachFn);
 
+		const forEachCustomStubsByPath = (stub) => {
+			stubs[`^${stub.name}(.+)$`] = `${stub.path}$1`;
+		};
+		this.customStubsByPath.forEach(forEachCustomStubsByPath);
 		return stubs;
 	}
 
@@ -69,6 +79,7 @@ class SuiteCloudAdvancedJestConfiguration {
 		suiteScriptsFolder[SUITESCRIPT_FOLDER_REGEX] = this._getSuiteScriptFolderPath();
 
 		const customizedModuleNameMapper = Object.assign({}, this._generateStubsModuleNameMapperEntries(), suiteScriptsFolder);
+		console.log(customizedModuleNameMapper);
 		return {
 			transformIgnorePatterns: [`/node_modules/(?!${nodeModulesToTransform})`],
 			transform: {
