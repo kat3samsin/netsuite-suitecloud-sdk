@@ -1,24 +1,32 @@
 {
-  "name": "@kat3samsin/suitecloud-unit-testing",
-  "version": "1.0.2",
-  "license": "UPL-1.0",
-  "repository": "https://github.com/kat3samsin/netsuite-suitecloud-sdk/tree/master/packages/unit-testing",
-  "bugs": {
-    "url": "https://github.com/kat3samsin/netsuite-suitecloud-sdk/issues"
-  },
-  "keywords": [
-    "NetSuite",
-    "SuiteCloud",
-    "SDF"
-  ],
-  "publishConfig": {
-    "access": "public"
-  },
-  "main": "jest-configuration/SuiteCloudJestConfiguration.js",
-  "dependencies": {
-    "@babel/preset-env": "^7.6.3",
-    "babel-jest": "^24.9.0",
-    "babel-plugin-transform-amd-to-commonjs": "1.4.0",
-    "xml2js": "^0.4.19"
-  }
+	"name": "@kat3samsin/suitecloud-unit-testing",
+	"version": "1.0.2",
+	"license": "UPL-1.0",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/kat3samsin/netsuite-suitecloud-sdk/tree/master/packages/unit-testing"
+	},
+	"bugs": {
+		"url": "https://github.com/kat3samsin/netsuite-suitecloud-sdk/issues"
+	},
+	"keywords": [
+		"NetSuite",
+		"SuiteCloud",
+		"SDF"
+	],
+	"publishConfig": {
+		"access": "public"
+	},
+	"main": "jest-configuration/SuiteCloudJestConfiguration.js",
+	"dependencies": {
+		"@babel/preset-env": "^7.6.3",
+		"babel-jest": "^24.9.0",
+		"babel-plugin-transform-amd-to-commonjs": "1.4.0",
+		"xml2js": "^0.4.19"
+	},
+	"description": "<p align=\"center\"><a href=\"#\"><img width=\"250\" src=\"https://www.netsuiteblogs.com/Websites/netsuiteblog/templates/Blog2017/images/OracleNetSuite_horiz.svg\"></a></p>",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": ""
 }
