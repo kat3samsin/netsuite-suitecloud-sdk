@@ -1,5 +1,5 @@
 {
-  "name": "@oracle/suitecloud-unit-testing",
+  "name": "@kat3samsin/suitecloud-unit-testing",
   "version": "1.0.2",
   "license": "UPL-1.0",
   "repository": "https://github.com/kat3samsin/netsuite-suitecloud-sdk/tree/master/packages/unit-testing",
