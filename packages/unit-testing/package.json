@@ -4,7 +4,7 @@
   "license": "UPL-1.0",
   "repository": "https://github.com/kat3samsin/netsuite-suitecloud-sdk/tree/master/packages/unit-testing",
   "bugs": {
-    "url": "https://github.com/oracle/netsuite-suitecloud-sdk/issues"
+    "url": "https://github.com/kat3samsin/netsuite-suitecloud-sdk/issues"
   },
   "keywords": [
     "NetSuite",
